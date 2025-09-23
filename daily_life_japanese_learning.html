@@ -1574,13 +1574,32 @@
 
         function generateQuizOptions(correctWord) {
             const options = [correctWord.indonesian];
-            const otherWords = dictionary.filter(w => w.indonesian !== correctWord.indonesian);
+            // 同じカテゴリの単語を優先的に選択
+            const sameCategoryWords = dictionary.filter(w =>
+                w.category === correctWord.category && w.indonesian !== correctWord.indonesian
+            );
+            const otherWords = dictionary.filter(w =>
+                w.category !== correctWord.category && w.indonesian !== correctWord.indonesian
+            );
 
-            while (options.length < 4) {
-                const randomWord = otherWords[Math.floor(Math.random() * otherWords.length)];
+            // 同じカテゴリから2つ選択
+            while (options.length < 3 && sameCategoryWords.length > 0) {
+                const randomIndex = Math.floor(Math.random() * sameCategoryWords.length);
+                const randomWord = sameCategoryWords[randomIndex];
                 if (!options.includes(randomWord.indonesian)) {
                     options.push(randomWord.indonesian);
                 }
+                sameCategoryWords.splice(randomIndex, 1);
+            }
+
+            // 足りない分は他のカテゴリから選択
+            while (options.length < 4 && otherWords.length > 0) {
+                const randomIndex = Math.floor(Math.random() * otherWords.length);
+                const randomWord = otherWords[randomIndex];
+                if (!options.includes(randomWord.indonesian)) {
+                    options.push(randomWord.indonesian);
+                }
+                otherWords.splice(randomIndex, 1);
             }
 
             return options.sort(() => Math.random() - 0.5);
