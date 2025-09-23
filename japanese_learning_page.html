@@ -219,6 +219,32 @@
             padding: 15px;
             transition: all 0.3s;
             cursor: pointer;
+            position: relative;
+        }
+
+        .word-card.new-word {
+            border-color: #ff6b6b;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
+        }
+
+        .new-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(255, 107, 107, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
         @media (min-width: 768px) {
@@ -850,7 +876,7 @@
     </div>
 
     <script>
-        // Complete Dictionary data - All 172 words from CSV
+        // Complete Dictionary data - All 197 words (172 original + 25 new from Excel procedures)
         const dictionary = [
             // 基本作業用語
             {category: "基本作業用語", japanese: "組立", hiragana: "くみたて", indonesian: "Perakitan", romaji: "kumidate"},
@@ -863,6 +889,9 @@
             {category: "基本作業用語", japanese: "完成", hiragana: "かんせい", indonesian: "Penyelesaian", romaji: "kansei"},
             {category: "基本作業用語", japanese: "作業", hiragana: "さぎょう", indonesian: "Pekerjaan", romaji: "sagyou"},
             {category: "基本作業用語", japanese: "工程", hiragana: "こうてい", indonesian: "Proses", romaji: "koutei"},
+            {category: "基本作業用語", japanese: "系", hiragana: "けい", indonesian: "Sistem", romaji: "kei", isNew: true},
+            {category: "基本作業用語", japanese: "用", hiragana: "よう", indonesian: "Untuk", romaji: "you", isNew: true},
+            {category: "基本作業用語", japanese: "済", hiragana: "ずみ", indonesian: "Sudah Selesai", romaji: "zumi", isNew: true},
 
             // 基本動作動詞
             {category: "基本動作動詞", japanese: "置く", hiragana: "おく", indonesian: "Meletakkan", romaji: "oku"},
@@ -909,6 +938,16 @@
             {category: "部品・コンポーネント", japanese: "スタンド", hiragana: "すたんど", indonesian: "Stand", romaji: "sutando"},
             {category: "部品・コンポーネント", japanese: "ユニット", hiragana: "ゆにっと", indonesian: "Unit", romaji: "yunitto"},
             {category: "部品・コンポーネント", japanese: "アッセンブリ", hiragana: "あっせんぶり", indonesian: "Assembly", romaji: "assenburi"},
+            {category: "部品・コンポーネント", japanese: "SW枠", hiragana: "すいっちわく", indonesian: "Switch Frame", romaji: "suicchi waku", isNew: true},
+            {category: "部品・コンポーネント", japanese: "拍子木", hiragana: "ひょうしぎ", indonesian: "Key Block", romaji: "hyoushigi", isNew: true},
+            {category: "部品・コンポーネント", japanese: "上鍵盤", hiragana: "うえけんばん", indonesian: "Upper Keyboard", romaji: "ue kenban", isNew: true},
+            {category: "部品・コンポーネント", japanese: "下鍵盤", hiragana: "したけんばん", indonesian: "Lower Keyboard", romaji: "shita kenban", isNew: true},
+            {category: "部品・コンポーネント", japanese: "背面ステイ", hiragana: "はいめんすてい", indonesian: "Rear Stay", romaji: "haimen sutei", isNew: true},
+            {category: "部品・コンポーネント", japanese: "補強金具", hiragana: "ほきょうかなぐ", indonesian: "Reinforcement Bracket", romaji: "hokyou kanagu", isNew: true},
+            {category: "部品・コンポーネント", japanese: "カバー金具", hiragana: "かばーかなぐ", indonesian: "Cover Bracket", romaji: "kabaa kanagu", isNew: true},
+            {category: "部品・コンポーネント", japanese: "Sカバー", hiragana: "えすかばー", indonesian: "S Cover", romaji: "esu kabaa", isNew: true},
+            {category: "部品・コンポーネント", japanese: "背面カバー", hiragana: "はいめんかばー", indonesian: "Rear Cover", romaji: "haimen kabaa", isNew: true},
+            {category: "部品・コンポーネント", japanese: "レバー", hiragana: "ればー", indonesian: "Lever", romaji: "rebaa", isNew: true},
 
             // 工具・器具
             {category: "工具・器具", japanese: "ドライバー", hiragana: "どらいばー", indonesian: "Obeng", romaji: "doraibaa"},
@@ -981,6 +1020,9 @@
             {category: "鍵盤楽器特有の用語", japanese: "音色", hiragana: "ねいろ", indonesian: "Warna Suara", romaji: "neiro"},
             {category: "鍵盤楽器特有の用語", japanese: "音量", hiragana: "おんりょう", indonesian: "Volume", romaji: "onryou"},
             {category: "鍵盤楽器特有の用語", japanese: "鍵盤タッチ", hiragana: "けんばんたっち", indonesian: "Sentuhan Keyboard", romaji: "kenban tacchi"},
+            {category: "鍵盤楽器特有の用語", japanese: "ペダル鍵盤", hiragana: "ぺだるけんばん", indonesian: "Keyboard Pedal", romaji: "pedaru kenban", isNew: true},
+            {category: "鍵盤楽器特有の用語", japanese: "スタンドユニット", hiragana: "すたんどゆにっと", indonesian: "Unit Stand", romaji: "sutando yunitto", isNew: true},
+            {category: "鍵盤楽器特有の用語", japanese: "パネル系", hiragana: "ぱねる", indonesian: "Panel", romaji: "paneru", isNew: true},
 
             // 基板・電子接続
             {category: "基板・電子接続", japanese: "プリント基板", hiragana: "ぷりんときばん", indonesian: "Papan Sirkuit Cetak", romaji: "purinto kiban"},
@@ -1052,7 +1094,16 @@
             {category: "作業工程・手順", japanese: "曲げ", hiragana: "まげ", indonesian: "Pembengkokan", romaji: "mage"},
             {category: "作業工程・手順", japanese: "切断", hiragana: "せつだん", indonesian: "Pemotongan", romaji: "setsudan"},
             {category: "作業工程・手順", japanese: "研磨", hiragana: "けんま", indonesian: "Penghalusan", romaji: "kenma"},
-            {category: "作業工程・手順", japanese: "洗浄", hiragana: "せんじょう", indonesian: "Pembersihan", romaji: "senjou"}
+            {category: "作業工程・手順", japanese: "洗浄", hiragana: "せんじょう", indonesian: "Pembersihan", romaji: "senjou"},
+            {category: "作業工程・手順", japanese: "総組立", hiragana: "そうくみたて", indonesian: "Assembly Total", romaji: "sou kumidate", isNew: true},
+            {category: "作業工程・手順", japanese: "改版", hiragana: "かいはん", indonesian: "Revisi", romaji: "kaihan", isNew: true},
+            {category: "作業工程・手順", japanese: "印刷済", hiragana: "いんさつずみ", indonesian: "Sudah Dicetak", romaji: "insatsu zumi", isNew: true},
+            {category: "作業工程・手順", japanese: "サブ作業", hiragana: "さぶさぎょう", indonesian: "Sub Work", romaji: "sabu sagyou", isNew: true},
+            {category: "作業工程・手順", japanese: "変更なし", hiragana: "へんこうなし", indonesian: "Tidak Ada Perubahan", romaji: "henkou nashi", isNew: true},
+            {category: "作業工程・手順", japanese: "フォーマット", hiragana: "ふぉーまっと", indonesian: "Format", romaji: "foomaatto", isNew: true},
+            {category: "作業工程・手順", japanese: "下ケースF", hiragana: "したけーすえふ", indonesian: "Under Case F", romaji: "shita keesu efu", isNew: true},
+            {category: "作業工程・手順", japanese: "下ケースR", hiragana: "したけーすあーる", indonesian: "Under Case R", romaji: "shita keesu aaru", isNew: true},
+            {category: "作業工程・手順", japanese: "下ケースAssy", hiragana: "したけーすあっせんぶり", indonesian: "Under Case Assembly", romaji: "shita keesu assenburi", isNew: true}
         ];
 
         let currentQuiz = [];
@@ -1096,13 +1147,15 @@
 
         function createWordCard(word) {
             const card = document.createElement('div');
-            card.className = 'word-card';
+            card.className = word.isNew ? 'word-card new-word' : 'word-card';
             card.onclick = () => markAsLearned(word);
 
             const categoryTranslation = getCategoryTranslation(word.category);
             const exampleId = `example-${word.japanese.replace(/[^\w]/g, '')}-${Math.random().toString(36).substr(2, 9)}`;
 
+            const newBadge = word.isNew ? '<div class="new-badge">NEW</div>' : '';
             card.innerHTML = `
+                ${newBadge}
                 <div class="word-japanese">${word.japanese}</div>
                 <div class="word-hiragana">${word.hiragana}</div>
                 <div class="word-indonesian">${word.indonesian}</div>
@@ -2068,6 +2121,132 @@
                     japanese: "部品を洗浄してください。",
                     romaji: "buhin wo senjou shite kudasai.",
                     indonesian: "Bersihkan komponennya."
+                },
+                // 新しい用語の使用例
+                "系": {
+                    japanese: "パネル系の作業を開始します。",
+                    romaji: "paneru no sagyou wo kaishi shimasu.",
+                    indonesian: "Memulai pekerjaan panel."
+                },
+                "用": {
+                    japanese: "TP2用の部品を使います。",
+                    romaji: "TP2 you no buhin wo tsukaemasu.",
+                    indonesian: "Menggunakan komponen untuk TP2."
+                },
+                "済": {
+                    japanese: "印刷済の手順書を確認してください。",
+                    romaji: "insatsu zumi no tenjun sho wo kakunin shite kudasai.",
+                    indonesian: "Periksa prosedur yang sudah dicetak."
+                },
+                "SW枠": {
+                    japanese: "SW枠を正確に取り付けてください。",
+                    romaji: "suicchi waku wo seikaku ni toritsukete kudasai.",
+                    indonesian: "Pasang switch frame dengan tepat."
+                },
+                "拍子木": {
+                    japanese: "拍子木の位置を調整します。",
+                    romaji: "hyoushigi no ichi wo chousei shimasu.",
+                    indonesian: "Menyesuaikan posisi key block."
+                },
+                "上鍵盤": {
+                    japanese: "上鍵盤を下鍵盤と合わせてください。",
+                    romaji: "ue kenban wo shita kenban to awasete kudasai.",
+                    indonesian: "Sesuaikan upper keyboard dengan lower keyboard."
+                },
+                "下鍵盤": {
+                    japanese: "下鍵盤の動作をテストします。",
+                    romaji: "shita kenban no dousa wo tesuto shimasu.",
+                    indonesian: "Menguji gerakan lower keyboard."
+                },
+                "背面ステイ": {
+                    japanese: "背面ステイでケースを補強します。",
+                    romaji: "haimen sutei de keesu wo hokyou shimasu.",
+                    indonesian: "Memperkuat casing dengan rear stay."
+                },
+                "補強金具": {
+                    japanese: "補強金具をネジで固定してください。",
+                    romaji: "hokyou kanagu wo neji de kotei shite kudasai.",
+                    indonesian: "Fiksasi reinforcement bracket dengan sekrup."
+                },
+                "カバー金具": {
+                    japanese: "カバー金具の取り付けを確認します。",
+                    romaji: "kabaa kanagu no toritsuke wo kakunin shimasu.",
+                    indonesian: "Memastikan pemasangan cover bracket."
+                },
+                "Sカバー": {
+                    japanese: "Sカバーを左右に取り付けます。",
+                    romaji: "S kabaa wo sayuu ni toritsukemasu.",
+                    indonesian: "Memasang S cover kiri dan kanan."
+                },
+                "背面カバー": {
+                    japanese: "背面カバーの傷をチェックします。",
+                    romaji: "haimen kabaa no kizu wo chekku shimasu.",
+                    indonesian: "Memeriksa goresan pada rear cover."
+                },
+                "レバー": {
+                    japanese: "レバーを軽く引いてください。",
+                    romaji: "rebaa wo karaku hiite kudasai.",
+                    indonesian: "Tarik lever dengan ringan."
+                },
+                "ペダル鍵盤": {
+                    japanese: "ペダル鍵盤の組立が完了しました。",
+                    romaji: "pedaru kenban no kumidate ga kanryou shimashita.",
+                    indonesian: "Assembly keyboard pedal sudah selesai."
+                },
+                "スタンドユニット": {
+                    japanese: "スタンドユニットを立ててください。",
+                    romaji: "sutando yunitto wo tatete kudasai.",
+                    indonesian: "Tegakkan unit stand."
+                },
+                "パネル系": {
+                    japanese: "パネル系の検査を行います。",
+                    romaji: "paneru no kensa wo okonaimasu.",
+                    indonesian: "Melakukan inspeksi panel."
+                },
+                "総組立": {
+                    japanese: "総組立の最終工程です。",
+                    romaji: "sou kumidate no saishuu koutei desu.",
+                    indonesian: "Ini adalah proses akhir assembly total."
+                },
+                "改版": {
+                    japanese: "手順書の改版をしました。",
+                    romaji: "tenjun sho no kaihan wo shimashita.",
+                    indonesian: "Melakukan revisi prosedur."
+                },
+                "印刷済": {
+                    japanese: "印刷済のラベルを貼ってください。",
+                    romaji: "insatsu zumi no raberu wo hatte kudasai.",
+                    indonesian: "Tempel label yang sudah dicetak."
+                },
+                "サブ作業": {
+                    japanese: "サブ作業を先に完了させます。",
+                    romaji: "sabu sagyou wo saki ni kanryou sasemasu.",
+                    indonesian: "Menyelesaikan sub work terlebih dahulu."
+                },
+                "変更なし": {
+                    japanese: "この工程は変更なしです。",
+                    romaji: "kono koutei wa henkou nashi desu.",
+                    indonesian: "Proses ini tidak ada perubahan."
+                },
+                "フォーマット": {
+                    japanese: "新しいフォーマットを使用します。",
+                    romaji: "atarashii foomaatto wo shiyou shimasu.",
+                    indonesian: "Menggunakan format baru."
+                },
+                "下ケースF": {
+                    japanese: "下ケースFの組立を開始します。",
+                    romaji: "shita keesu F no kumidate wo kaishi shimasu.",
+                    indonesian: "Memulai assembly under case F."
+                },
+                "下ケースR": {
+                    japanese: "下ケースRの検査をしてください。",
+                    romaji: "shita keesu R no kensa wo shite kudasai.",
+                    indonesian: "Lakukan inspeksi under case R."
+                },
+                "下ケースAssy": {
+                    japanese: "下ケースAssyが完成しました。",
+                    romaji: "shita keesu Assy ga kansei shimashita.",
+                    indonesian: "Under case assembly sudah selesai."
                 }
             };
 
