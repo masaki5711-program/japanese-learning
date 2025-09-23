@@ -1,0 +1,1739 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>組立作業日本語学習 - Japanese Assembly Terminology for Indonesians</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 10px;
+            margin: 0;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 20px;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .home-button {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .home-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .header h1 {
+            font-size: 1.8em;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .header p {
+            font-size: 1em;
+            opacity: 0.9;
+            line-height: 1.3;
+        }
+
+        @media (min-width: 768px) {
+            .header {
+                padding: 30px;
+            }
+
+            .header h1 {
+                font-size: 2.5em;
+                margin-bottom: 10px;
+            }
+
+            .header p {
+                font-size: 1.2em;
+            }
+        }
+
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tab {
+            flex: 1;
+            min-width: 120px;
+            padding: 12px 8px;
+            background: #f8f9fa;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        @media (min-width: 768px) {
+            .tab {
+                padding: 15px 20px;
+                font-size: 16px;
+                min-width: auto;
+            }
+        }
+
+        .tab.active {
+            background: white;
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .tab:hover {
+            background: #e9ecef;
+        }
+
+        .content {
+            padding: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .content {
+                padding: 30px;
+            }
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        @media (min-width: 768px) {
+            .search-container {
+                margin-bottom: 30px;
+                gap: 15px;
+            }
+
+            .search-input {
+                min-width: 250px;
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .category-filter {
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            background: white;
+        }
+
+        .word-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 480px) {
+            .word-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .word-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                margin-bottom: 30px;
+            }
+        }
+
+        .word-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 15px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        @media (min-width: 768px) {
+            .word-card {
+                padding: 20px;
+            }
+        }
+
+        .word-card:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.1);
+        }
+
+        .word-japanese {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+
+        .word-hiragana {
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-bottom: 8px;
+        }
+
+        .word-indonesian {
+            font-size: 18px;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .word-romaji {
+            font-size: 14px;
+            color: #95a5a6;
+            font-style: italic;
+        }
+
+        @media (min-width: 768px) {
+            .word-japanese {
+                font-size: 24px;
+                margin-bottom: 5px;
+            }
+
+            .word-hiragana {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+            .word-indonesian {
+                font-size: 20px;
+                margin-bottom: 5px;
+            }
+
+            .word-romaji {
+                font-size: 16px;
+            }
+        }
+
+        .word-category {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 6px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .example-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 15px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex: 1;
+            min-width: 0;
+        }
+
+        @media (min-width: 768px) {
+            .button-row {
+                gap: 8px;
+                margin-top: 15px;
+            }
+
+            .example-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+                flex: initial;
+            }
+        }
+
+        .example-btn:hover {
+            background: #c0392b;
+        }
+
+        .word-example {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 10px;
+            display: none;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .word-example.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .example-japanese {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+
+        .example-indonesian {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .example-romaji {
+            color: #95a5a6;
+            font-size: 13px;
+            font-style: italic;
+            margin-top: 4px;
+        }
+
+        .category-bilingual {
+            font-size: 11px;
+            line-height: 1.2;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+        }
+
+        .quiz-container {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .quiz-question {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .quiz-option {
+            padding: 15px 20px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+
+        .quiz-option:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .quiz-option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .quiz-option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .quiz-score {
+            font-size: 20px;
+            margin: 20px 0;
+            color: #2c3e50;
+        }
+
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+
+        .example-container {
+            background: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .example-sentence {
+            margin: 8px 0;
+            padding: 8px;
+            background: white;
+            border-radius: 5px;
+        }
+
+        .pronunciation-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 15px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex: 1;
+            min-width: 0;
+        }
+
+        @media (min-width: 768px) {
+            .pronunciation-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+                flex: initial;
+                margin-left: 10px;
+            }
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .stats-container {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+                margin-bottom: 30px;
+            }
+        }
+
+        .stat-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+
+        .quiz-category-selection {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .category-checkboxes {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        @media (min-width: 480px) {
+            .category-checkboxes {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .category-checkboxes {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        .category-checkbox {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .category-checkbox:hover {
+            background: #e9ecef;
+        }
+
+        .category-checkbox input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        .category-checkbox label {
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 1.3;
+            flex: 1;
+        }
+
+        .quiz-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .select-all-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .select-all-btn:hover {
+            background: #2980b9;
+        }
+
+        .quiz-question-bilingual {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .quiz-question-japanese {
+            font-size: 22px;
+            color: #2c3e50;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .quiz-question-indonesian {
+            font-size: 18px;
+            color: #7f8c8d;
+            font-style: italic;
+            line-height: 1.3;
+        }
+
+        .quiz-question-romaji {
+            font-size: 14px;
+            color: #95a5a6;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        @media (min-width: 768px) {
+            .quiz-question-japanese {
+                font-size: 28px;
+                margin-bottom: 8px;
+            }
+
+            .quiz-question-indonesian {
+                font-size: 20px;
+            }
+
+            .quiz-question-romaji {
+                font-size: 16px;
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="home-button">🏠 ホーム</a>
+            <h1>🔧 組立作業日本語学習</h1>
+            <p>Belajar Bahasa Jepang untuk Perakitan - Japanese Assembly Terminology</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('dictionary')">📚 辞書 (Kamus)</button>
+            <button class="tab" onclick="showTab('quiz')">🎯 クイズ (Kuis)</button>
+            <button class="tab" onclick="showTab('examples')">💡 例文 (Contoh)</button>
+            <button class="tab" onclick="showTab('practice')">🗣️ 練習 (Latihan)</button>
+        </div>
+
+        <div class="content">
+            <!-- Dictionary Tab -->
+            <div id="dictionary" class="tab-content active">
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalWords">172</div>
+                        <div class="stat-label">総単語数 (Total Kata)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="categoriesCount">11</div>
+                        <div class="stat-label">カテゴリ数 (Kategori)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="learnedWords">0</div>
+                        <div class="stat-label">学習済み (Dipelajari)</div>
+                    </div>
+                </div>
+
+                <div class="search-container">
+                    <input type="text" class="search-input" id="searchInput" placeholder="単語を検索... (Cari kata...)">
+                    <select class="category-filter" id="categoryFilter">
+                        <option value="">すべてのカテゴリ (Semua Kategori)</option>
+                        <option value="基本作業用語">基本作業用語 (Istilah Kerja Dasar)</option>
+                        <option value="基本動作動詞">基本動作動詞 (Kata Kerja Dasar)</option>
+                        <option value="部品・コンポーネント">部品・コンポーネント (Komponen)</option>
+                        <option value="工具・器具">工具・器具 (Alat)</option>
+                        <option value="方向・位置">方向・位置 (Arah & Posisi)</option>
+                        <option value="測定・サイズ">測定・サイズ (Pengukuran)</option>
+                        <option value="状態・品質">状態・品質 (Kondisi & Kualitas)</option>
+                        <option value="作業指示">作業指示 (Instruksi Kerja)</option>
+                        <option value="電子部品・LCD関連">電子部品・LCD関連 (Komponen Elektronik)</option>
+                        <option value="梱包・出荷">梱包・出荷 (Pengemasan)</option>
+                        <option value="鍵盤楽器特有の用語">鍵盤楽器特有の用語 (Istilah Keyboard)</option>
+                        <option value="基板・電子接続">基板・電子接続 (PCB & Koneksi)</option>
+                        <option value="品質管理・不具合">品質管理・不具合 (Quality Control)</option>
+                        <option value="部品構成・組立構造">部品構成・組立構造 (Struktur Assembly)</option>
+                        <option value="作業工程・手順">作業工程・手順 (Proses Kerja)</option>
+                    </select>
+                </div>
+
+                <div class="word-grid" id="wordGrid">
+                    <!-- Words will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Quiz Tab -->
+            <div id="quiz" class="tab-content">
+                <div class="quiz-container">
+                    <h2>🎯 日本語クイズ - Kuis Bahasa Jepang</h2>
+
+                    <!-- Category Selection -->
+                    <div class="quiz-category-selection">
+                        <h3>カテゴリを選択してください - Pilih Kategori</h3>
+                        <div class="quiz-controls">
+                            <button class="select-all-btn" onclick="selectAllCategories()">全て選択 (Pilih Semua)</button>
+                            <button class="select-all-btn" onclick="deselectAllCategories()">全て解除 (Hapus Semua)</button>
+                        </div>
+                        <div class="category-checkboxes" id="categoryCheckboxes">
+                            <!-- Checkboxes will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="quiz-score">
+                        スコア (Skor): <span id="quizScore">0</span> / <span id="quizTotal">0</span>
+                    </div>
+
+                    <div class="quiz-question-bilingual" id="quizQuestionContainer">
+                        <div class="quiz-question-japanese" id="quizQuestionJapanese">クイズを開始してください</div>
+                        <div class="quiz-question-indonesian" id="quizQuestionIndonesian">Mulai kuis</div>
+                        <div class="quiz-question-romaji" id="quizQuestionRomaji">Mulai kuis</div>
+                    </div>
+
+                    <div class="quiz-options" id="quizOptions">
+                        <!-- Options will be populated by JavaScript -->
+                    </div>
+
+                    <div class="quiz-controls">
+                        <button class="btn" onclick="startQuiz()">新しいクイズを開始 (Mulai Kuis Baru)</button>
+                        <button class="btn" onclick="nextQuestion()" id="nextBtn" style="display:none;">次の問題 (Soal Berikutnya)</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Examples Tab -->
+            <div id="examples" class="tab-content">
+                <h2>💡 実用例文 - Contoh Penggunaan Praktis</h2>
+
+                <div class="example-container">
+                    <div class="example-title">📋 基本作業指示 (Instruksi Kerja Dasar)</div>
+                    <div class="example-sentence">
+                        <strong>日本語:</strong> ネジを締めてください。<br>
+                        <strong>ひらがな:</strong> ねじをしめてください。<br>
+                        <strong>Indonesia:</strong> Tolong kencangkan sekrupnya.<br>
+                        <strong>Romaji:</strong> neji wo shimete kudasai.
+                    </div>
+                    <div class="example-sentence">
+                        <strong>日本語:</strong> 基板をケースに取り付けます。<br>
+                        <strong>ひらがな:</strong> きばんをけーすにとりつけます。<br>
+                        <strong>Indonesia:</strong> Memasang PCB ke casing.<br>
+                        <strong>Romaji:</strong> kiban wo keesu ni toritsukemasu.
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example-title">🔍 品質検査 (Inspeksi Kualitas)</div>
+                    <div class="example-sentence">
+                        <strong>日本語:</strong> この部品に傷があります。<br>
+                        <strong>ひらがな:</strong> このぶひんにきずがあります。<br>
+                        <strong>Indonesia:</strong> Ada goresan pada komponen ini.<br>
+                        <strong>Romaji:</strong> kono buhin ni kizu ga arimasu.
+                    </div>
+                    <div class="example-sentence">
+                        <strong>日本語:</strong> 良品です。検査完了。<br>
+                        <strong>ひらがな:</strong> りょうひんです。けんさかんりょう。<br>
+                        <strong>Indonesia:</strong> Produk baik. Inspeksi selesai.<br>
+                        <strong>Romaji:</strong> ryouhin desu. kensa kanryou.
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example-title">🔌 電子部品作業 (Pekerjaan Komponen Elektronik)</div>
+                    <div class="example-sentence">
+                        <strong>日本語:</strong> コネクタを基板に差し込んでください。<br>
+                        <strong>ひらがな:</strong> こねくたをきばんにさしこんでください。<br>
+                        <strong>Indonesia:</strong> Tolong masukkan konektor ke PCB.<br>
+                        <strong>Romaji:</strong> konekuta wo kiban ni sashikonde kudasai.
+                    </div>
+                    <div class="example-sentence">
+                        <strong>日本語:</strong> 束線を結束バンドで固定します。<br>
+                        <strong>ひらがな:</strong> そくせんをけっそくばんどでこていします。<br>
+                        <strong>Indonesia:</strong> Mengikat bundel kabel dengan cable tie.<br>
+                        <strong>Romaji:</strong> sokusen wo kessoku bando de kotei shimasu.
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example-title">📦 梱包作業 (Pekerjaan Pengemasan)</div>
+                    <div class="example-sentence">
+                        <strong>日本語:</strong> 緩衝材を箱に入れてください。<br>
+                        <strong>ひらがな:</strong> かんしょうざいをはこにいれてください。<br>
+                        <strong>Indonesia:</strong> Tolong masukkan bahan peredam ke kotak.<br>
+                        <strong>Romaji:</strong> kanshouzai wo hako ni irete kudasai.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Practice Tab -->
+            <div id="practice" class="tab-content">
+                <h2>🗣️ 発音練習 - Latihan Pelafalan</h2>
+                <p>選択した単語をクリックして発音を練習しましょう (Klik kata yang dipilih untuk berlatih pelafalan)</p>
+
+                <div class="search-container">
+                    <select class="category-filter" id="practiceCategory">
+                        <option value="基本動作動詞">基本動作動詞 (Kata Kerja Dasar)</option>
+                        <option value="基本作業用語">基本作業用語 (Istilah Kerja Dasar)</option>
+                        <option value="工具・器具">工具・器具 (Alat)</option>
+                        <option value="方向・位置">方向・位置 (Arah & Posisi)</option>
+                    </select>
+                    <button class="btn" onclick="loadPracticeWords()">練習単語を読み込み (Muat Kata Latihan)</button>
+                </div>
+
+                <div class="word-grid" id="practiceGrid">
+                    <!-- Practice words will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Complete Dictionary data - All 172 words from CSV
+        const dictionary = [
+            // 基本作業用語
+            {category: "基本作業用語", japanese: "組立", hiragana: "くみたて", indonesian: "Perakitan", romaji: "kumidate"},
+            {category: "基本作業用語", japanese: "取付", hiragana: "とりつけ", indonesian: "Pemasangan", romaji: "toritsuke"},
+            {category: "基本作業用語", japanese: "固定", hiragana: "こてい", indonesian: "Pengikatan", romaji: "kotei"},
+            {category: "基本作業用語", japanese: "接続", hiragana: "せつぞく", indonesian: "Penyambungan", romaji: "setsuzoku"},
+            {category: "基本作業用語", japanese: "配線", hiragana: "はいせん", indonesian: "Pengkabelan", romaji: "haisen"},
+            {category: "基本作業用語", japanese: "調整", hiragana: "ちょうせい", indonesian: "Penyesuaian", romaji: "chousei"},
+            {category: "基本作業用語", japanese: "検査", hiragana: "けんさ", indonesian: "Pemeriksaan", romaji: "kensa"},
+            {category: "基本作業用語", japanese: "完成", hiragana: "かんせい", indonesian: "Penyelesaian", romaji: "kansei"},
+            {category: "基本作業用語", japanese: "作業", hiragana: "さぎょう", indonesian: "Pekerjaan", romaji: "sagyou"},
+            {category: "基本作業用語", japanese: "工程", hiragana: "こうてい", indonesian: "Proses", romaji: "koutei"},
+
+            // 基本動作動詞
+            {category: "基本動作動詞", japanese: "置く", hiragana: "おく", indonesian: "Meletakkan", romaji: "oku"},
+            {category: "基本動作動詞", japanese: "取る", hiragana: "とる", indonesian: "Mengambil", romaji: "toru"},
+            {category: "基本動作動詞", japanese: "付ける", hiragana: "つける", indonesian: "Memasang", romaji: "tsukeru"},
+            {category: "基本動作動詞", japanese: "外す", hiragana: "はずす", indonesian: "Melepas", romaji: "hazusu"},
+            {category: "基本動作動詞", japanese: "入れる", hiragana: "いれる", indonesian: "Memasukkan", romaji: "ireru"},
+            {category: "基本動作動詞", japanese: "出す", hiragana: "だす", indonesian: "Mengeluarkan", romaji: "dasu"},
+            {category: "基本動作動詞", japanese: "持つ", hiragana: "もつ", indonesian: "Memegang", romaji: "motsu"},
+            {category: "基本動作動詞", japanese: "運ぶ", hiragana: "はこぶ", indonesian: "Membawa", romaji: "hakobu"},
+            {category: "基本動作動詞", japanese: "向ける", hiragana: "むける", indonesian: "Mengarahkan", romaji: "mukeru"},
+            {category: "基本動作動詞", japanese: "回す", hiragana: "まわす", indonesian: "Memutar", romaji: "mawasu"},
+            {category: "基本動作動詞", japanese: "締める", hiragana: "しめる", indonesian: "Mengencangkan", romaji: "shimeru"},
+            {category: "基本動作動詞", japanese: "緩める", hiragana: "ゆるめる", indonesian: "Mengendurkan", romaji: "yurumeru"},
+            {category: "基本動作動詞", japanese: "押す", hiragana: "おす", indonesian: "Menekan", romaji: "osu"},
+            {category: "基本動作動詞", japanese: "引く", hiragana: "ひく", indonesian: "Menarik", romaji: "hiku"},
+            {category: "基本動作動詞", japanese: "合わせる", hiragana: "あわせる", indonesian: "Mencocokkan", romaji: "awaseru"},
+            {category: "基本動作動詞", japanese: "挟む", hiragana: "はさむ", indonesian: "Menjepit", romaji: "hasamu"},
+            {category: "基本動作動詞", japanese: "支える", hiragana: "ささえる", indonesian: "Menopang", romaji: "sasaeru"},
+            {category: "基本動作動詞", japanese: "立てる", hiragana: "たてる", indonesian: "Mendirikan", romaji: "tateru"},
+            {category: "基本動作動詞", japanese: "倒す", hiragana: "たおす", indonesian: "Merebahkan", romaji: "taosu"},
+            {category: "基本動作動詞", japanese: "開ける", hiragana: "あける", indonesian: "Membuka", romaji: "akeru"},
+            {category: "基本動作動詞", japanese: "閉める", hiragana: "しめる", indonesian: "Menutup", romaji: "shimeru"},
+            {category: "基本動作動詞", japanese: "通す", hiragana: "とおす", indonesian: "Melewatkan", romaji: "toosu"},
+            {category: "基本動作動詞", japanese: "抜く", hiragana: "ぬく", indonesian: "Mencabut", romaji: "nuku"},
+            {category: "基本動作動詞", japanese: "刺す", hiragana: "さす", indonesian: "Menusuk/Memasukkan", romaji: "sasu"},
+            {category: "基本動作動詞", japanese: "巻く", hiragana: "まく", indonesian: "Melilitkan", romaji: "maku"},
+            {category: "基本動作動詞", japanese: "伸ばす", hiragana: "のばす", indonesian: "Memanjangkan", romaji: "nobasu"},
+            {category: "基本動作動詞", japanese: "縮める", hiragana: "ちぢめる", indonesian: "Memperpendek", romaji: "chidimeru"},
+            {category: "基本動作動詞", japanese: "曲げる", hiragana: "まげる", indonesian: "Membengkokkan", romaji: "mageru"},
+            {category: "基本動作動詞", japanese: "並べる", hiragana: "ならべる", indonesian: "Menyusun", romaji: "naraberu"},
+            {category: "基本動作動詞", japanese: "重ねる", hiragana: "かさねる", indonesian: "Menumpuk", romaji: "kasaneru"},
+            {category: "基本動作動詞", japanese: "分ける", hiragana: "わける", indonesian: "Memisahkan", romaji: "wakeru"},
+            {category: "基本動作動詞", japanese: "確かめる", hiragana: "たしかめる", indonesian: "Memastikan", romaji: "tashikameru"},
+
+            // 部品・コンポーネント
+            {category: "部品・コンポーネント", japanese: "パネル", hiragana: "ぱねる", indonesian: "Panel", romaji: "paneru"},
+            {category: "部品・コンポーネント", japanese: "ケース", hiragana: "けーす", indonesian: "Casing", romaji: "keesu"},
+            {category: "部品・コンポーネント", japanese: "カバー", hiragana: "かばー", indonesian: "Penutup", romaji: "kabaa"},
+            {category: "部品・コンポーネント", japanese: "フレーム", hiragana: "ふれーむ", indonesian: "Rangka", romaji: "fureemu"},
+            {category: "部品・コンポーネント", japanese: "基板", hiragana: "きばん", indonesian: "Papan Sirkuit", romaji: "kiban"},
+            {category: "部品・コンポーネント", japanese: "鍵盤", hiragana: "けんばん", indonesian: "Keyboard", romaji: "kenban"},
+            {category: "部品・コンポーネント", japanese: "ペダル", hiragana: "ぺだる", indonesian: "Pedal", romaji: "pedaru"},
+            {category: "部品・コンポーネント", japanese: "スタンド", hiragana: "すたんど", indonesian: "Stand", romaji: "sutando"},
+            {category: "部品・コンポーネント", japanese: "ユニット", hiragana: "ゆにっと", indonesian: "Unit", romaji: "yunitto"},
+            {category: "部品・コンポーネント", japanese: "アッセンブリ", hiragana: "あっせんぶり", indonesian: "Assembly", romaji: "assenburi"},
+
+            // 工具・器具
+            {category: "工具・器具", japanese: "ドライバー", hiragana: "どらいばー", indonesian: "Obeng", romaji: "doraibaa"},
+            {category: "工具・器具", japanese: "ネジ", hiragana: "ねじ", indonesian: "Sekrup", romaji: "neji"},
+            {category: "工具・器具", japanese: "ボルト", hiragana: "ぼると", indonesian: "Baut", romaji: "boruto"},
+            {category: "工具・器具", japanese: "ナット", hiragana: "なっと", indonesian: "Mur", romaji: "natto"},
+            {category: "工具・器具", japanese: "ワッシャー", hiragana: "わっしゃー", indonesian: "Ring", romaji: "wasshaa"},
+            {category: "工具・器具", japanese: "ケーブル", hiragana: "けーぶる", indonesian: "Kabel", romaji: "keebubu"},
+            {category: "工具・器具", japanese: "コネクタ", hiragana: "こねくた", indonesian: "Konektor", romaji: "konekuta"},
+            {category: "工具・器具", japanese: "ハンダ", hiragana: "はんだ", indonesian: "Solder", romaji: "handa"},
+
+            // 方向・位置
+            {category: "方向・位置", japanese: "上", hiragana: "うえ", indonesian: "Atas", romaji: "ue"},
+            {category: "方向・位置", japanese: "下", hiragana: "した", indonesian: "Bawah", romaji: "shita"},
+            {category: "方向・位置", japanese: "左", hiragana: "ひだり", indonesian: "Kiri", romaji: "hidari"},
+            {category: "方向・位置", japanese: "右", hiragana: "みぎ", indonesian: "Kanan", romaji: "migi"},
+            {category: "方向・位置", japanese: "前面", hiragana: "ぜんめん", indonesian: "Depan", romaji: "zenmen"},
+            {category: "方向・位置", japanese: "背面", hiragana: "はいめん", indonesian: "Belakang", romaji: "haimen"},
+            {category: "方向・位置", japanese: "側面", hiragana: "そくめん", indonesian: "Samping", romaji: "sokumen"},
+            {category: "方向・位置", japanese: "内側", hiragana: "うちがわ", indonesian: "Dalam", romaji: "uchigawa"},
+            {category: "方向・位置", japanese: "外側", hiragana: "そとがわ", indonesian: "Luar", romaji: "sotogawa"},
+
+            // 測定・サイズ
+            {category: "測定・サイズ", japanese: "長さ", hiragana: "ながさ", indonesian: "Panjang", romaji: "nagasa"},
+            {category: "測定・サイズ", japanese: "幅", hiragana: "はば", indonesian: "Lebar", romaji: "haba"},
+            {category: "測定・サイズ", japanese: "高さ", hiragana: "たかさ", indonesian: "Tinggi", romaji: "takasa"},
+            {category: "測定・サイズ", japanese: "厚み", hiragana: "あつみ", indonesian: "Ketebalan", romaji: "atsumi"},
+            {category: "測定・サイズ", japanese: "重量", hiragana: "じゅうりょう", indonesian: "Berat", romaji: "juuryou"},
+            {category: "測定・サイズ", japanese: "サイズ", hiragana: "さいず", indonesian: "Ukuran", romaji: "saizu"},
+
+            // 状態・品質
+            {category: "状態・品質", japanese: "良好", hiragana: "りょうこう", indonesian: "Baik", romaji: "ryoukou"},
+            {category: "状態・品質", japanese: "不良", hiragana: "ふりょう", indonesian: "Rusak", romaji: "furyou"},
+            {category: "状態・品質", japanese: "良品", hiragana: "りょうひん", indonesian: "Produk Baik", romaji: "ryouhin"},
+            {category: "状態・品質", japanese: "不良品", hiragana: "ふりょうひん", indonesian: "Produk Cacat", romaji: "furyouhin"},
+            {category: "状態・品質", japanese: "完了", hiragana: "かんりょう", indonesian: "Selesai", romaji: "kanryou"},
+            {category: "状態・品質", japanese: "未完了", hiragana: "みかんりょう", indonesian: "Belum Selesai", romaji: "mikanryou"},
+            {category: "状態・品質", japanese: "正常", hiragana: "せいじょう", indonesian: "Normal", romaji: "seijou"},
+            {category: "状態・品質", japanese: "異常", hiragana: "いじょう", indonesian: "Abnormal", romaji: "ijou"},
+
+            // 作業指示
+            {category: "作業指示", japanese: "始める", hiragana: "はじめる", indonesian: "Mulai", romaji: "hajimeru"},
+            {category: "作業指示", japanese: "終わる", hiragana: "おわる", indonesian: "Selesai", romaji: "owaru"},
+            {category: "作業指示", japanese: "確認", hiragana: "かくにん", indonesian: "Konfirmasi", romaji: "kakunin"},
+            {category: "作業指示", japanese: "注意", hiragana: "ちゅうい", indonesian: "Perhatian", romaji: "chuui"},
+            {category: "作業指示", japanese: "警告", hiragana: "けいこく", indonesian: "Peringatan", romaji: "keikoku"},
+            {category: "作業指示", japanese: "禁止", hiragana: "きんし", indonesian: "Dilarang", romaji: "kinshi"},
+
+            // 電子部品・LCD関連
+            {category: "電子部品・LCD関連", japanese: "LCD", hiragana: "えるしーでぃー", indonesian: "LCD", romaji: "eruushiidii"},
+            {category: "電子部品・LCD関連", japanese: "液晶", hiragana: "えきしょう", indonesian: "Kristal Cair", romaji: "ekishou"},
+            {category: "電子部品・LCD関連", japanese: "画面", hiragana: "がめん", indonesian: "Layar", romaji: "gamen"},
+            {category: "電子部品・LCD関連", japanese: "表示", hiragana: "ひょうじ", indonesian: "Tampilan", romaji: "hyouji"},
+            {category: "電子部品・LCD関連", japanese: "電源", hiragana: "でんげん", indonesian: "Daya Listrik", romaji: "dengen"},
+            {category: "電子部品・LCD関連", japanese: "電池", hiragana: "でんち", indonesian: "Baterai", romaji: "denchi"},
+            {category: "電子部品・LCD関連", japanese: "回路", hiragana: "かいろ", indonesian: "Sirkuit", romaji: "kairo"},
+
+            // 梱包・出荷
+            {category: "梱包・出荷", japanese: "梱包", hiragana: "こんぽう", indonesian: "Pengemasan", romaji: "konpou"},
+            {category: "梱包・出荷", japanese: "箱", hiragana: "はこ", indonesian: "Kotak", romaji: "hako"},
+            {category: "梱包・出荷", japanese: "緩衝材", hiragana: "かんしょうざい", indonesian: "Bahan Peredam", romaji: "kanshouzai"},
+            {category: "梱包・出荷", japanese: "ラベル", hiragana: "らべる", indonesian: "Label", romaji: "raberu"},
+            {category: "梱包・出荷", japanese: "出荷", hiragana: "しゅっか", indonesian: "Pengiriman", romaji: "shukka"},
+            {category: "梱包・出荷", japanese: "検品", hiragana: "けんぴん", indonesian: "Inspeksi", romaji: "kenpin"},
+
+            // 鍵盤楽器特有の用語
+            {category: "鍵盤楽器特有の用語", japanese: "鍵盤蓋", hiragana: "けんばんぶた", indonesian: "Penutup Keyboard", romaji: "kenbanbuta"},
+            {category: "鍵盤楽器特有の用語", japanese: "白鍵", hiragana: "はっけん", indonesian: "Tuts Putih", romaji: "hakken"},
+            {category: "鍵盤楽器特有の用語", japanese: "黒鍵", hiragana: "こっけん", indonesian: "Tuts Hitam", romaji: "kokken"},
+            {category: "鍵盤楽器特有の用語", japanese: "音色", hiragana: "ねいろ", indonesian: "Warna Suara", romaji: "neiro"},
+            {category: "鍵盤楽器特有の用語", japanese: "音量", hiragana: "おんりょう", indonesian: "Volume", romaji: "onryou"},
+            {category: "鍵盤楽器特有の用語", japanese: "鍵盤タッチ", hiragana: "けんばんたっち", indonesian: "Sentuhan Keyboard", romaji: "kenban tacchi"},
+
+            // 基板・電子接続
+            {category: "基板・電子接続", japanese: "プリント基板", hiragana: "ぷりんときばん", indonesian: "Papan Sirkuit Cetak", romaji: "purinto kiban"},
+            {category: "基板・電子接続", japanese: "端子", hiragana: "たんし", indonesian: "Terminal", romaji: "tanshi"},
+            {category: "基板・電子接続", japanese: "ソケット", hiragana: "そけっと", indonesian: "Socket", romaji: "soketto"},
+            {category: "基板・電子接続", japanese: "ピン", hiragana: "ぴん", indonesian: "Pin", romaji: "pin"},
+            {category: "基板・電子接続", japanese: "ハーネス", hiragana: "はーねす", indonesian: "Harness", romaji: "haanesu"},
+            {category: "基板・電子接続", japanese: "束線", hiragana: "そくせん", indonesian: "Bundel Kabel", romaji: "sokusen"},
+            {category: "基板・電子接続", japanese: "束線止め", hiragana: "そくせんどめ", indonesian: "Pengikat Kabel", romaji: "sokusen dome"},
+            {category: "基板・電子接続", japanese: "配線固定", hiragana: "はいせんこてい", indonesian: "Fiksasi Kabel", romaji: "haisen kotei"},
+            {category: "基板・電子接続", japanese: "結束バンド", hiragana: "けっそくばんど", indonesian: "Cable Tie", romaji: "kessoku bando"},
+            {category: "基板・電子接続", japanese: "結束", hiragana: "けっそく", indonesian: "Ikatan", romaji: "kessoku"},
+            {category: "基板・電子接続", japanese: "はんだ付け", hiragana: "はんだづけ", indonesian: "Penyolderan", romaji: "handa duke"},
+            {category: "基板・電子接続", japanese: "絶縁", hiragana: "ぜつえん", indonesian: "Isolasi", romaji: "zetsu en"},
+            {category: "基板・電子接続", japanese: "アース", hiragana: "あーす", indonesian: "Ground", romaji: "aasu"},
+            {category: "基板・電子接続", japanese: "導通", hiragana: "どうつう", indonesian: "Konduktivitas", romaji: "doutsuu"},
+            {category: "基板・電子接続", japanese: "ショート", hiragana: "しょーと", indonesian: "Hubung Singkat", romaji: "shooto"},
+
+            // 品質管理・不具合
+            {category: "品質管理・不具合", japanese: "傷", hiragana: "きず", indonesian: "Goresan", romaji: "kizu"},
+            {category: "品質管理・不具合", japanese: "かけ", hiragana: "かけ", indonesian: "Pecah/Retak", romaji: "kake"},
+            {category: "品質管理・不具合", japanese: "欠品", hiragana: "けっぴん", indonesian: "Kekurangan Part", romaji: "keppin"},
+            {category: "品質管理・不具合", japanese: "破損", hiragana: "はそん", indonesian: "Kerusakan", romaji: "hason"},
+            {category: "品質管理・不具合", japanese: "汚れ", hiragana: "よごれ", indonesian: "Kotoran", romaji: "yogore"},
+            {category: "品質管理・不具合", japanese: "変色", hiragana: "へんしょく", indonesian: "Perubahan Warna", romaji: "henshoku"},
+            {category: "品質管理・不具合", japanese: "ひび", hiragana: "ひび", indonesian: "Retak Halus", romaji: "hibi"},
+            {category: "品質管理・不具合", japanese: "凹み", hiragana: "へこみ", indonesian: "Penyok", romaji: "hekomi"},
+            {category: "品質管理・不具合", japanese: "バリ", hiragana: "ばり", indonesian: "Burr", romaji: "bari"},
+            {category: "品質管理・不具合", japanese: "打痕", hiragana: "だこん", indonesian: "Bekas Benturan", romaji: "dakon"},
+            {category: "品質管理・不具合", japanese: "腐食", hiragana: "ふしょく", indonesian: "Korosi", romaji: "fushoku"},
+            {category: "品質管理・不具合", japanese: "摩耗", hiragana: "まもう", indonesian: "Keausan", romaji: "mamou"},
+            {category: "品質管理・不具合", japanese: "不完全", hiragana: "ふかんぜん", indonesian: "Tidak Sempurna", romaji: "fukanzen"},
+            {category: "品質管理・不具合", japanese: "寸法不良", hiragana: "すんぽうふりょう", indonesian: "Dimensi Salah", romaji: "sunpou furyou"},
+            {category: "品質管理・不具合", japanese: "接触不良", hiragana: "せっしょくふりょう", indonesian: "Kontak Buruk", romaji: "sesshoku furyou"},
+            {category: "品質管理・不具合", japanese: "抜け", hiragana: "ぬけ", indonesian: "Terlepas", romaji: "nuke"},
+            {category: "品質管理・不具合", japanese: "緩み", hiragana: "ゆるみ", indonesian: "Kendor", romaji: "yurumi"},
+
+            // 部品構成・組立構造
+            {category: "部品構成・組立構造", japanese: "サブアッセンブリ", hiragana: "さぶあっせんぶり", indonesian: "Sub Assembly", romaji: "sabu assenburi"},
+            {category: "部品構成・組立構造", japanese: "メインアッセンブリ", hiragana: "めいんあっせんぶり", indonesian: "Main Assembly", romaji: "mein assenburi"},
+            {category: "部品構成・組立構造", japanese: "ベース", hiragana: "べーす", indonesian: "Base", romaji: "beesu"},
+            {category: "部品構成・組立構造", japanese: "ブラケット", hiragana: "ぶらけっと", indonesian: "Bracket", romaji: "buraketto"},
+            {category: "部品構成・組立構造", japanese: "スペーサー", hiragana: "すぺーさー", indonesian: "Spacer", romaji: "supeesaa"},
+            {category: "部品構成・組立構造", japanese: "クッション", hiragana: "くっしょん", indonesian: "Cushion", romaji: "kusshon"},
+            {category: "部品構成・組立構造", japanese: "補強材", hiragana: "ほきょうざい", indonesian: "Penguat", romaji: "hokyouzai"},
+            {category: "部品構成・組立構造", japanese: "ステー", hiragana: "すてー", indonesian: "Stay", romaji: "sutee"},
+            {category: "部品構成・組立構造", japanese: "アングル", hiragana: "あんぐる", indonesian: "Angle", romaji: "anguru"},
+            {category: "部品構成・組立構造", japanese: "プレート", hiragana: "ぷれーと", indonesian: "Plate", romaji: "pureeto"},
+            {category: "部品構成・組立構造", japanese: "シール", hiragana: "しーる", indonesian: "Seal", romaji: "shiiru"},
+            {category: "部品構成・組立構造", japanese: "パッキン", hiragana: "ぱっきん", indonesian: "Packing", romaji: "pakkin"},
+            {category: "部品構成・組立構造", japanese: "ガスケット", hiragana: "がすけっと", indonesian: "Gasket", romaji: "gasuketto"},
+            {category: "部品構成・組立構造", japanese: "金具", hiragana: "かなぐ", indonesian: "Fitting", romaji: "kanagu"},
+            {category: "部品構成・組立構造", japanese: "ヒンジ", hiragana: "ひんじ", indonesian: "Hinge", romaji: "hinji"},
+            {category: "部品構成・組立構造", japanese: "バネ", hiragana: "ばね", indonesian: "Spring", romaji: "bane"},
+            {category: "部品構成・組立構造", japanese: "ダンパー", hiragana: "だんぱー", indonesian: "Damper", romaji: "danpaa"},
+
+            // 作業工程・手順
+            {category: "作業工程・手順", japanese: "仮組み", hiragana: "かりぐみ", indonesian: "Assembly Sementara", romaji: "karigumi"},
+            {category: "作業工程・手順", japanese: "本組み", hiragana: "ほんぐみ", indonesian: "Assembly Final", romaji: "hongumi"},
+            {category: "作業工程・手順", japanese: "位置決め", hiragana: "いちぎめ", indonesian: "Positioning", romaji: "ichigime"},
+            {category: "作業工程・手順", japanese: "芯出し", hiragana: "しんだし", indonesian: "Centering", romaji: "shindashi"},
+            {category: "作業工程・手順", japanese: "締付け", hiragana: "しめつけ", indonesian: "Pengencangan", romaji: "shimetsuke"},
+            {category: "作業工程・手順", japanese: "圧入", hiragana: "あつにゅう", indonesian: "Press-in", romaji: "atsunyuu"},
+            {category: "作業工程・手順", japanese: "差込み", hiragana: "さしこみ", indonesian: "Insersi", romaji: "sashikomi"},
+            {category: "作業工程・手順", japanese: "引抜き", hiragana: "ひきぬき", indonesian: "Penarikan", romaji: "hikinuki"},
+            {category: "作業工程・手順", japanese: "回転", hiragana: "かいてん", indonesian: "Rotasi", romaji: "kaiten"},
+            {category: "作業工程・手順", japanese: "押込み", hiragana: "おしこみ", indonesian: "Penekanan", romaji: "oshikomi"},
+            {category: "作業工程・手順", japanese: "引張り", hiragana: "ひっぱり", indonesian: "Tarikan", romaji: "hippari"},
+            {category: "作業工程・手順", japanese: "曲げ", hiragana: "まげ", indonesian: "Pembengkokan", romaji: "mage"},
+            {category: "作業工程・手順", japanese: "切断", hiragana: "せつだん", indonesian: "Pemotongan", romaji: "setsudan"},
+            {category: "作業工程・手順", japanese: "研磨", hiragana: "けんま", indonesian: "Penghalusan", romaji: "kenma"},
+            {category: "作業工程・手順", japanese: "洗浄", hiragana: "せんじょう", indonesian: "Pembersihan", romaji: "senjou"}
+        ];
+
+        let currentQuiz = [];
+        let currentQuestionIndex = 0;
+        let quizScore = 0;
+        let learnedWords = new Set();
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDictionary();
+            setupSearch();
+            setupQuizCategories();
+            loadVoices();
+        });
+
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function loadDictionary() {
+            const wordGrid = document.getElementById('wordGrid');
+            wordGrid.innerHTML = '';
+
+            dictionary.forEach(word => {
+                const wordCard = createWordCard(word);
+                wordGrid.appendChild(wordCard);
+            });
+
+            updateStats();
+        }
+
+        function createWordCard(word) {
+            const card = document.createElement('div');
+            card.className = 'word-card';
+            card.onclick = () => markAsLearned(word);
+
+            const categoryTranslation = getCategoryTranslation(word.category);
+            const exampleId = `example-${word.japanese.replace(/[^\w]/g, '')}-${Math.random().toString(36).substr(2, 9)}`;
+
+            card.innerHTML = `
+                <div class="word-japanese">${word.japanese}</div>
+                <div class="word-hiragana">${word.hiragana}</div>
+                <div class="word-indonesian">${word.indonesian}</div>
+                <div class="word-romaji">${word.romaji}</div>
+                <div class="word-category category-bilingual">
+                    ${word.category}<br><small>${categoryTranslation}</small>
+                </div>
+                <div class="button-row">
+                    <button class="pronunciation-btn" onclick="speakWord('${word.japanese}', event)">🔊 発音 (Pelafalan)</button>
+                    <button class="example-btn" onclick="toggleExample('${exampleId}', '${word.japanese}', event)">📝 事例 (Contoh)</button>
+                </div>
+                <div id="${exampleId}" class="word-example">
+                    ${getWordExample(word)}
+                </div>
+            `;
+
+            return card;
+        }
+
+        function getCategoryTranslation(category) {
+            const translations = {
+                "基本作業用語": "Istilah Kerja Dasar",
+                "基本動作動詞": "Kata Kerja Dasar",
+                "部品・コンポーネント": "Komponen",
+                "工具・器具": "Alat",
+                "方向・位置": "Arah & Posisi",
+                "測定・サイズ": "Pengukuran",
+                "状態・品質": "Kondisi & Kualitas",
+                "作業指示": "Instruksi Kerja",
+                "電子部品・LCD関連": "Komponen Elektronik",
+                "梱包・出荷": "Pengemasan",
+                "鍵盤楽器特有の用語": "Istilah Keyboard",
+                "基板・電子接続": "PCB & Koneksi",
+                "品質管理・不具合": "Quality Control",
+                "部品構成・組立構造": "Struktur Assembly",
+                "作業工程・手順": "Proses Kerja"
+            };
+            return translations[category] || category;
+        }
+
+        function getWordExample(word) {
+            const examples = {
+                // 基本作業用語
+                "組立": {
+                    japanese: "基板を組立します。",
+                    romaji: "kiban wo kumidate shimasu.",
+                    indonesian: "Merakit papan sirkuit."
+                },
+                "取付": {
+                    japanese: "ネジで取り付けてください。",
+                    romaji: "neji de toritsukete kudasai.",
+                    indonesian: "Pasang dengan sekrup."
+                },
+                "固定": {
+                    japanese: "ケーブルを固定します。",
+                    romaji: "keeburu wo kotei shimasu.",
+                    indonesian: "Memperbaiki kabel."
+                },
+                "接続": {
+                    japanese: "コネクタを接続してください。",
+                    romaji: "konekuta wo setsuzoku shite kudasai.",
+                    indonesian: "Sambungkan konektor."
+                },
+                "配線": {
+                    japanese: "配線を確認します。",
+                    romaji: "haisen wo kakunin shimasu.",
+                    indonesian: "Periksa pengkabelan."
+                },
+                "調整": {
+                    japanese: "位置を調整してください。",
+                    romaji: "ichi wo chousei shite kudasai.",
+                    indonesian: "Sesuaikan posisinya."
+                },
+                "検査": {
+                    japanese: "品質を検査します。",
+                    romaji: "hinshitsu wo kensa shimasu.",
+                    indonesian: "Memeriksa kualitas."
+                },
+                "完成": {
+                    japanese: "組立が完成しました。",
+                    romaji: "kumidate ga kansei shimashita.",
+                    indonesian: "Perakitan telah selesai."
+                },
+                "作業": {
+                    japanese: "作業を開始します。",
+                    romaji: "sagyou wo kaishi shimasu.",
+                    indonesian: "Memulai pekerjaan."
+                },
+                "工程": {
+                    japanese: "次の工程に進みます。",
+                    romaji: "tsugi no koutei ni susumimasu.",
+                    indonesian: "Lanjut ke proses berikutnya."
+                },
+
+                // 基本動作動詞
+                "置く": {
+                    japanese: "部品をここに置いてください。",
+                    romaji: "buhin wo koko ni oite kudasai.",
+                    indonesian: "Letakkan komponen di sini."
+                },
+                "取る": {
+                    japanese: "工具を取ってください。",
+                    romaji: "kougu wo totte kudasai.",
+                    indonesian: "Ambil alatnya."
+                },
+                "付ける": {
+                    japanese: "カバーを付けます。",
+                    romaji: "kabaa wo tsukemasu.",
+                    indonesian: "Memasang penutup."
+                },
+                "外す": {
+                    japanese: "ネジを外してください。",
+                    romaji: "neji wo hazushite kudasai.",
+                    indonesian: "Lepaskan sekrupnya."
+                },
+                "入れる": {
+                    japanese: "箱に入れてください。",
+                    romaji: "hako ni irete kudasai.",
+                    indonesian: "Masukkan ke dalam kotak."
+                },
+                "出す": {
+                    japanese: "部品を出してください。",
+                    romaji: "buhin wo dashite kudasai.",
+                    indonesian: "Keluarkan komponennya."
+                },
+                "締める": {
+                    japanese: "ボルトを締めます。",
+                    romaji: "boruto wo shimemasu.",
+                    indonesian: "Kencangkan baut."
+                },
+                "緩める": {
+                    japanese: "ナットを緩めます。",
+                    romaji: "natto wo yurumemasu.",
+                    indonesian: "Kendurkan mur."
+                },
+
+                // 部品・コンポーネント
+                "基板": {
+                    japanese: "基板に傷がないか確認します。",
+                    romaji: "kiban ni kizu ga nai ka kakunin shimasu.",
+                    indonesian: "Periksa papan sirkuit tidak ada goresan."
+                },
+                "ケース": {
+                    japanese: "ケースを開けてください。",
+                    romaji: "keesu wo akete kudasai.",
+                    indonesian: "Buka casingnya."
+                },
+                "カバー": {
+                    japanese: "カバーを取り付けます。",
+                    romaji: "kabaa wo toritsukemasu.",
+                    indonesian: "Memasang penutup."
+                },
+                "ネジ": {
+                    japanese: "ネジを締めてください。",
+                    romaji: "neji wo shimete kudasai.",
+                    indonesian: "Kencangkan sekrup."
+                },
+                "ボルト": {
+                    japanese: "ボルトが緩んでいます。",
+                    romaji: "boruto ga yurunde imasu.",
+                    indonesian: "Bautnya kendor."
+                },
+
+                // 状態・品質
+                "良品": {
+                    japanese: "これは良品です。",
+                    romaji: "kore wa ryouhin desu.",
+                    indonesian: "Ini adalah produk baik."
+                },
+                "不良品": {
+                    japanese: "不良品を取り除きます。",
+                    romaji: "furyouhin wo torinoukimasu.",
+                    indonesian: "Membuang produk cacat."
+                },
+                "傷": {
+                    japanese: "表面に傷があります。",
+                    romaji: "hyoumen ni kizu ga arimasu.",
+                    indonesian: "Ada goresan di permukaan."
+                },
+                "欠品": {
+                    japanese: "部品が欠品しています。",
+                    romaji: "buhin ga keppin shite imasu.",
+                    indonesian: "Komponen kurang/hilang."
+                },
+
+                // 基板・電子接続
+                "束線": {
+                    japanese: "束線を整理します。",
+                    romaji: "sokusen wo seiri shimasu.",
+                    indonesian: "Merapikan bundel kabel."
+                },
+                "束線止め": {
+                    japanese: "束線止めで固定します。",
+                    romaji: "sokusen dome de kotei shimasu.",
+                    indonesian: "Memperbaiki dengan pengikat kabel."
+                },
+                "結束バンド": {
+                    japanese: "結束バンドを使います。",
+                    romaji: "kessoku bando wo tsukai masu.",
+                    indonesian: "Menggunakan cable tie."
+                },
+                "はんだ付け": {
+                    japanese: "はんだ付けを行います。",
+                    romaji: "handa duke wo okonai masu.",
+                    indonesian: "Melakukan penyolderan."
+                },
+
+                // 作業工程・手順
+                "仮組み": {
+                    japanese: "まず仮組みします。",
+                    romaji: "mazu karigumi shimasu.",
+                    indonesian: "Pertama assembly sementara."
+                },
+                "本組み": {
+                    japanese: "本組みを開始します。",
+                    romaji: "hongumi wo kaishi shimasu.",
+                    indonesian: "Memulai assembly final."
+                },
+                "位置決め": {
+                    japanese: "正確に位置決めします。",
+                    romaji: "seikaku ni ichigime shimasu.",
+                    indonesian: "Positioning dengan tepat."
+                },
+                "締付け": {
+                    japanese: "規定トルクで締付けます。",
+                    romaji: "kitei toruku de shimetsukemasu.",
+                    indonesian: "Mengencangkan dengan torsi yang ditentukan."
+                }
+            };
+
+            const example = examples[word.japanese];
+            if (example) {
+                return `
+                    <div class="example-japanese">${example.japanese}</div>
+                    <div class="example-romaji">${example.romaji}</div>
+                    <div class="example-indonesian">${example.indonesian}</div>
+                `;
+            }
+
+            return `
+                <div class="example-japanese">${word.japanese}の使用例</div>
+                <div class="example-romaji">${word.romaji} no shiyou rei</div>
+                <div class="example-indonesian">Contoh penggunaan ${word.japanese}</div>
+            `;
+        }
+
+        function toggleExample(exampleId, wordJapanese, event) {
+            event.stopPropagation();
+            const exampleDiv = document.getElementById(exampleId);
+            exampleDiv.classList.toggle('show');
+        }
+
+
+        function markAsLearned(word) {
+            learnedWords.add(word.japanese);
+            updateStats();
+            // Visual feedback
+            event.currentTarget.style.background = '#e8f5e8';
+            setTimeout(() => {
+                event.currentTarget.style.background = '';
+            }, 1000);
+        }
+
+        function speakWord(text, event) {
+            event.stopPropagation();
+
+            if ('speechSynthesis' in window) {
+                // Stop any ongoing speech
+                speechSynthesis.cancel();
+
+                // Get the word data to access hiragana and romaji
+                const wordData = dictionary.find(word => word.japanese === text);
+
+                let textToSpeak = text;
+                let pronunciationHint = '';
+
+                if (wordData) {
+                    // Use hiragana for more accurate pronunciation
+                    textToSpeak = wordData.hiragana;
+                    pronunciationHint = `Romaji: ${wordData.romaji}`;
+
+                    // For better pronunciation, add spaces between characters for some problematic words
+                    if (text.length > 2) {
+                        textToSpeak = wordData.hiragana.split('').join(' ');
+                    }
+                }
+
+                const utterance = new SpeechSynthesisUtterance(textToSpeak);
+                utterance.lang = 'ja-JP';
+                utterance.rate = 0.6; // Slower for better clarity
+                utterance.pitch = 1.0;
+                utterance.volume = 1.0;
+
+                // Priority order for Japanese voices
+                const voices = speechSynthesis.getVoices();
+                const japaneseVoices = voices.filter(voice =>
+                    voice.lang.includes('ja') ||
+                    voice.name.includes('Japanese') ||
+                    voice.name.includes('日本')
+                );
+
+                // Try to find the best Japanese voice
+                let selectedVoice = null;
+
+                // Prefer native Japanese voices
+                selectedVoice = japaneseVoices.find(voice =>
+                    voice.name.includes('Kyoko') ||
+                    voice.name.includes('Otoya') ||
+                    voice.name.includes('Sayaka')
+                );
+
+                // Fallback to any Japanese voice
+                if (!selectedVoice && japaneseVoices.length > 0) {
+                    selectedVoice = japaneseVoices[0];
+                }
+
+                if (selectedVoice) {
+                    utterance.voice = selectedVoice;
+                    console.log('Using voice:', selectedVoice.name);
+                }
+
+                // Handle errors and provide feedback
+                utterance.onerror = function(event) {
+                    console.log('Speech synthesis error:', event);
+                    showSpeechFeedback('音声エラー / Error suara', 'error');
+                };
+
+                utterance.onstart = function() {
+                    const feedbackText = pronunciationHint ?
+                        `🔊 ${text} (${pronunciationHint})` :
+                        `🔊 再生中... / Sedang memutar...`;
+                    showSpeechFeedback(feedbackText, 'playing');
+                };
+
+                utterance.onend = function() {
+                    hideSpeechFeedback();
+                };
+
+                // Add small delay to ensure voice is loaded
+                setTimeout(() => {
+                    speechSynthesis.speak(utterance);
+                }, 100);
+
+            } else {
+                showSpeechFeedback('音声機能がサポートされていません / Fitur suara tidak didukung', 'error');
+            }
+        }
+
+        function showSpeechFeedback(message, type) {
+            // Remove existing feedback
+            const existingFeedback = document.getElementById('speechFeedback');
+            if (existingFeedback) {
+                existingFeedback.remove();
+            }
+
+            const feedback = document.createElement('div');
+            feedback.id = 'speechFeedback';
+            feedback.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'error' ? '#e74c3c' : '#27ae60'};
+                color: white;
+                padding: 10px 20px;
+                border-radius: 25px;
+                font-size: 14px;
+                z-index: 1000;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                animation: slideIn 0.3s ease;
+            `;
+
+            feedback.textContent = message;
+            document.body.appendChild(feedback);
+
+            // Auto-hide after 3 seconds for non-playing messages
+            if (type !== 'playing') {
+                setTimeout(() => {
+                    hideSpeechFeedback();
+                }, 3000);
+            }
+        }
+
+        function hideSpeechFeedback() {
+            const feedback = document.getElementById('speechFeedback');
+            if (feedback) {
+                feedback.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    if (feedback.parentNode) {
+                        feedback.remove();
+                    }
+                }, 300);
+            }
+        }
+
+        // Load voices when they become available
+        function loadVoices() {
+            if ('speechSynthesis' in window) {
+                let voices = speechSynthesis.getVoices();
+
+                // Chrome loads voices asynchronously
+                if (voices.length === 0) {
+                    speechSynthesis.addEventListener('voiceschanged', function() {
+                        voices = speechSynthesis.getVoices();
+                        console.log('Available voices loaded:', voices.filter(v => v.lang.includes('ja')));
+                    });
+                } else {
+                    console.log('Available Japanese voices:', voices.filter(v => v.lang.includes('ja')));
+                }
+            }
+        }
+
+        function updateStats() {
+            document.getElementById('totalWords').textContent = dictionary.length;
+            document.getElementById('learnedWords').textContent = learnedWords.size;
+        }
+
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const categoryFilter = document.getElementById('categoryFilter');
+
+            searchInput.addEventListener('input', filterWords);
+            categoryFilter.addEventListener('change', filterWords);
+        }
+
+        function filterWords() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const selectedCategory = document.getElementById('categoryFilter').value;
+
+            const filtered = dictionary.filter(word => {
+                const matchesSearch = word.japanese.toLowerCase().includes(searchTerm) ||
+                                    word.hiragana.toLowerCase().includes(searchTerm) ||
+                                    word.indonesian.toLowerCase().includes(searchTerm) ||
+                                    word.romaji.toLowerCase().includes(searchTerm);
+                const matchesCategory = !selectedCategory || word.category === selectedCategory;
+
+                return matchesSearch && matchesCategory;
+            });
+
+            displayFilteredWords(filtered);
+        }
+
+        function displayFilteredWords(words) {
+            const wordGrid = document.getElementById('wordGrid');
+            wordGrid.innerHTML = '';
+
+            words.forEach(word => {
+                const wordCard = createWordCard(word);
+                wordGrid.appendChild(wordCard);
+            });
+        }
+
+        function setupQuizCategories() {
+            const categories = [...new Set(dictionary.map(word => word.category))];
+            const checkboxContainer = document.getElementById('categoryCheckboxes');
+
+            categories.forEach(category => {
+                const categoryTranslation = getCategoryTranslation(category);
+                const checkboxDiv = document.createElement('div');
+                checkboxDiv.className = 'category-checkbox';
+
+                checkboxDiv.innerHTML = `
+                    <input type="checkbox" id="quiz-${category}" value="${category}" checked>
+                    <label for="quiz-${category}">
+                        ${category}<br>
+                        <small>${categoryTranslation}</small>
+                    </label>
+                `;
+
+                checkboxContainer.appendChild(checkboxDiv);
+            });
+        }
+
+        function selectAllCategories() {
+            document.querySelectorAll('#categoryCheckboxes input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = true;
+            });
+        }
+
+        function deselectAllCategories() {
+            document.querySelectorAll('#categoryCheckboxes input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+        }
+
+        function getSelectedCategories() {
+            const selectedCategories = [];
+            document.querySelectorAll('#categoryCheckboxes input[type="checkbox"]:checked').forEach(checkbox => {
+                selectedCategories.push(checkbox.value);
+            });
+            return selectedCategories;
+        }
+
+        function startQuiz() {
+            const selectedCategories = getSelectedCategories();
+
+            if (selectedCategories.length === 0) {
+                alert('少なくとも1つのカテゴリを選択してください。\nPilih minimal satu kategori.');
+                return;
+            }
+
+            // Filter dictionary by selected categories
+            const filteredWords = dictionary.filter(word => selectedCategories.includes(word.category));
+
+            if (filteredWords.length === 0) {
+                alert('選択されたカテゴリに単語がありません。\nTidak ada kata dalam kategori yang dipilih.');
+                return;
+            }
+
+            // Get up to 10 words, or all available if less than 10
+            const quizLength = Math.min(10, filteredWords.length);
+            currentQuiz = filteredWords.sort(() => Math.random() - 0.5).slice(0, quizLength);
+            currentQuestionIndex = 0;
+            quizScore = 0;
+
+            document.getElementById('quizScore').textContent = quizScore;
+            document.getElementById('quizTotal').textContent = currentQuiz.length;
+
+            showNextQuestion();
+        }
+
+        function showNextQuestion() {
+            if (currentQuestionIndex >= currentQuiz.length) {
+                endQuiz();
+                return;
+            }
+
+            const currentWord = currentQuiz[currentQuestionIndex];
+            const options = generateQuizOptions(currentWord);
+
+            // Set trilingual question (Japanese, Indonesian, Romaji)
+            document.getElementById('quizQuestionJapanese').textContent =
+                `この日本語の意味は？ "${currentWord.japanese}" (${currentWord.hiragana})`;
+            document.getElementById('quizQuestionIndonesian').textContent =
+                `Apa arti kata Jepang ini? "${currentWord.japanese}" (${currentWord.hiragana})`;
+            document.getElementById('quizQuestionRomaji').textContent =
+                `Romaji: ${currentWord.romaji}`;
+
+            const optionsContainer = document.getElementById('quizOptions');
+            optionsContainer.innerHTML = '';
+
+            options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = 'quiz-option';
+                button.textContent = option;
+                button.onclick = () => checkAnswer(option, currentWord.indonesian, button);
+                optionsContainer.appendChild(button);
+            });
+
+            document.getElementById('nextBtn').style.display = 'none';
+        }
+
+        function generateQuizOptions(correctWord) {
+            const options = [correctWord.indonesian];
+            const otherWords = dictionary.filter(w => w.indonesian !== correctWord.indonesian);
+
+            while (options.length < 4) {
+                const randomWord = otherWords[Math.floor(Math.random() * otherWords.length)];
+                if (!options.includes(randomWord.indonesian)) {
+                    options.push(randomWord.indonesian);
+                }
+            }
+
+            return options.sort(() => Math.random() - 0.5);
+        }
+
+        function checkAnswer(selectedAnswer, correctAnswer, button) {
+            const allOptions = document.querySelectorAll('.quiz-option');
+            allOptions.forEach(option => option.onclick = null);
+
+            if (selectedAnswer === correctAnswer) {
+                button.classList.add('correct');
+                quizScore++;
+            } else {
+                button.classList.add('incorrect');
+                // Highlight correct answer
+                allOptions.forEach(option => {
+                    if (option.textContent === correctAnswer) {
+                        option.classList.add('correct');
+                    }
+                });
+            }
+
+            document.getElementById('quizScore').textContent = quizScore;
+            document.getElementById('nextBtn').style.display = 'block';
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            showNextQuestion();
+        }
+
+        function endQuiz() {
+            const percentage = Math.round((quizScore / currentQuiz.length) * 100);
+            let resultMessage = '';
+            let resultMessageIndonesian = '';
+
+            if (percentage >= 90) {
+                resultMessage = '素晴らしい！完璧です！';
+                resultMessageIndonesian = 'Luar biasa! Sempurna!';
+            } else if (percentage >= 70) {
+                resultMessage = 'よくできました！';
+                resultMessageIndonesian = 'Bagus sekali!';
+            } else if (percentage >= 50) {
+                resultMessage = 'もう少し頑張りましょう。';
+                resultMessageIndonesian = 'Perlu sedikit lagi usaha.';
+            } else {
+                resultMessage = '復習が必要です。';
+                resultMessageIndonesian = 'Perlu banyak latihan lagi.';
+            }
+
+            document.getElementById('quizQuestionJapanese').textContent =
+                `クイズ完了！ スコア: ${quizScore}/${currentQuiz.length} (${percentage}%) ${resultMessage}`;
+            document.getElementById('quizQuestionIndonesian').textContent =
+                `Kuis selesai! Skor: ${quizScore}/${currentQuiz.length} (${percentage}%) ${resultMessageIndonesian}`;
+
+            document.getElementById('quizOptions').innerHTML = '';
+            document.getElementById('nextBtn').style.display = 'none';
+        }
+
+        function loadPracticeWords() {
+            const category = document.getElementById('practiceCategory').value;
+            const practiceWords = dictionary.filter(word => word.category === category);
+
+            const practiceGrid = document.getElementById('practiceGrid');
+            practiceGrid.innerHTML = '';
+
+            practiceWords.forEach(word => {
+                const card = createWordCard(word);
+                practiceGrid.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>

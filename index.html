@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本語学習 - Belajar Bahasa Jepang</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 40px;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            font-size: 1rem;
+            color: #888;
+            line-height: 1.6;
+        }
+
+        .selection-area {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .option-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-card.work {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .option-card.daily {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .option-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .option-card:hover::before {
+            left: 100%;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .card-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .card-description {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .selection-area {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .option-card {
+                padding: 25px 15px;
+            }
+
+            .card-icon {
+                font-size: 2.5rem;
+            }
+
+            .card-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px 15px;
+            }
+
+            .title {
+                font-size: 1.8rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .card-icon {
+                font-size: 2rem;
+            }
+
+            .card-title {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">日本語学習<br>Belajar Bahasa Jepang</h1>
+            <p class="subtitle">学習分野を選択してください<br>Pilih bidang pembelajaran</p>
+            <p class="description">
+                インドネシア人向けの日本語学習ツールです。仕事用語と日常会話の2つの分野から選択できます。<br>
+                <em>Alat pembelajaran bahasa Jepang untuk orang Indonesia. Anda dapat memilih antara terminologi kerja dan percakapan sehari-hari.</em>
+            </p>
+        </div>
+
+        <div class="selection-area">
+            <a href="japanese_learning_page.html" class="option-card work">
+                <span class="card-icon">🏭</span>
+                <div class="card-title">組立・製造用語<br>Terminologi Assembly</div>
+                <div class="card-subtitle">Manufacturing & Assembly</div>
+                <div class="card-description">
+                    工場での組立作業に使用される専門用語を学習<br>
+                    Pelajari istilah khusus untuk perakitan di pabrik
+                </div>
+            </a>
+
+            <a href="daily_life_japanese_learning.html" class="option-card daily">
+                <span class="card-icon">🏠</span>
+                <div class="card-title">日常会話<br>Percakapan Sehari-hari</div>
+                <div class="card-subtitle">Daily Life Conversation</div>
+                <div class="card-description">
+                    私生活で使用される基本的な日本語を学習<br>
+                    Pelajari bahasa Jepang dasar untuk kehidupan sehari-hari
+                </div>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>📚 各学習ページには辞書、クイズ、例文、発音練習が含まれています</p>
+            <p><em>Setiap halaman pembelajaran mencakup kamus, kuis, contoh kalimat, dan latihan pengucapan</em></p>
+        </div>
+    </div>
+</body>
+</html>
