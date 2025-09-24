@@ -386,6 +386,83 @@
             margin-bottom: 4px;
         }
 
+        .verb-conjugation {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: none;
+            border-left: 4px solid #27ae60;
+        }
+
+        .verb-conjugation.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        .conjugation-title {
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .conjugation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 480px) {
+            .conjugation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .conjugation-form {
+            background: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: 1px solid #d5e8d5;
+        }
+
+        .form-name {
+            font-size: 12px;
+            color: #666;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .form-japanese {
+            color: #2c3e50;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .form-romaji {
+            color: #7f8c8d;
+            font-size: 12px;
+            font-style: italic;
+        }
+
+        .verb-toggle-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-left: 5px;
+            transition: all 0.3s;
+        }
+
+        .verb-toggle-btn:hover {
+            background: #219a52;
+            transform: translateY(-1px);
+        }
+
         .example-indonesian {
             color: #e74c3c;
             font-weight: bold;
@@ -1152,6 +1229,7 @@
 
             const categoryTranslation = getCategoryTranslation(word.category);
             const exampleId = `example-${word.japanese.replace(/[^\w]/g, '')}-${Math.random().toString(36).substr(2, 9)}`;
+            const verbId = `verb-${word.japanese.replace(/[^\w]/g, '')}-${Math.random().toString(36).substr(2, 9)}`;
 
             const newBadge = word.isNew ? '<div class="new-badge">NEW</div>' : '';
             card.innerHTML = `
@@ -1166,10 +1244,14 @@
                 <div class="button-row">
                     <button class="pronunciation-btn" onclick="speakWord('${word.japanese}', event)">🔊 発音 (Pelafalan)</button>
                     <button class="example-btn" onclick="toggleExample('${exampleId}', '${word.japanese}', event)">📝 事例 (Contoh)</button>
+                    ${getVerbConjugations(word.japanese) ? `<button class="verb-toggle-btn" onclick="toggleVerbConjugation('${verbId}', '${word.japanese}', event)">🔄 活用 (Konjugasi)</button>` : ''}
                 </div>
                 <div id="${exampleId}" class="word-example">
                     ${getWordExample(word)}
                 </div>
+                ${getVerbConjugations(word.japanese) ? `<div id="${verbId}" class="verb-conjugation">
+                    ${getVerbConjugationHTML(word.japanese)}
+                </div>` : ''}
             `;
 
             return card;
@@ -1194,6 +1276,144 @@
                 "作業工程・手順": "Proses Kerja"
             };
             return translations[category] || category;
+        }
+
+        // 動詞活用データベース
+        function getVerbConjugations(verb) {
+            const conjugations = {
+                "持つ": {
+                    masu: {japanese: "持ちます", romaji: "mochimasu", meaning: "Bentuk Sopan (Saya memegang)"},
+                    te: {japanese: "持って", romaji: "motte", meaning: "Bentuk Te (Pegang dan...)"},
+                    imperative: {japanese: "持ってください", romaji: "motte kudasai", meaning: "Perintah Sopan (Tolong pegang)"},
+                    negative: {japanese: "持ちません", romaji: "mochimasen", meaning: "Bentuk Negatif (Tidak memegang)"},
+                    past: {japanese: "持ちました", romaji: "mochimashita", meaning: "Bentuk Lampau (Sudah memegang)"},
+                    potential: {japanese: "持てます", romaji: "motemasu", meaning: "Bentuk Dapat (Bisa memegang)"}
+                },
+                "取る": {
+                    masu: {japanese: "取ります", romaji: "torimasu", meaning: "Bentuk Sopan (Saya mengambil)"},
+                    te: {japanese: "取って", romaji: "totte", meaning: "Bentuk Te (Ambil dan...)"},
+                    imperative: {japanese: "取ってください", romaji: "totte kudasai", meaning: "Perintah Sopan (Tolong ambil)"},
+                    negative: {japanese: "取りません", romaji: "torimasen", meaning: "Bentuk Negatif (Tidak mengambil)"},
+                    past: {japanese: "取りました", romaji: "torimashita", meaning: "Bentuk Lampau (Sudah mengambil)"},
+                    potential: {japanese: "取れます", romaji: "toremasu", meaning: "Bentuk Dapat (Bisa mengambil)"}
+                },
+                "付ける": {
+                    masu: {japanese: "付けます", romaji: "tsukemasu", meaning: "Bentuk Sopan (Saya memasang)"},
+                    te: {japanese: "付けて", romaji: "tsukete", meaning: "Bentuk Te (Pasang dan...)"},
+                    imperative: {japanese: "付けてください", romaji: "tsukete kudasai", meaning: "Perintah Sopan (Tolong pasang)"},
+                    negative: {japanese: "付けません", romaji: "tsukemasen", meaning: "Bentuk Negatif (Tidak memasang)"},
+                    past: {japanese: "付けました", romaji: "tsukemashita", meaning: "Bentuk Lampau (Sudah memasang)"},
+                    potential: {japanese: "付けられます", romaji: "tsukeraremasu", meaning: "Bentuk Dapat (Bisa memasang)"}
+                },
+                "外す": {
+                    masu: {japanese: "外します", romaji: "hazushimasu", meaning: "Bentuk Sopan (Saya melepas)"},
+                    te: {japanese: "外して", romaji: "hazushite", meaning: "Bentuk Te (Lepas dan...)"},
+                    imperative: {japanese: "外してください", romaji: "hazushite kudasai", meaning: "Perintah Sopan (Tolong lepas)"},
+                    negative: {japanese: "外しません", romaji: "hazushimasen", meaning: "Bentuk Negatif (Tidak melepas)"},
+                    past: {japanese: "外しました", romaji: "hazushimashita", meaning: "Bentuk Lampau (Sudah melepas)"},
+                    potential: {japanese: "外せます", romaji: "hazusemasu", meaning: "Bentuk Dapat (Bisa melepas)"}
+                },
+                "入れる": {
+                    masu: {japanese: "入れます", romaji: "iremasu", meaning: "Bentuk Sopan (Saya memasukkan)"},
+                    te: {japanese: "入れて", romaji: "irete", meaning: "Bentuk Te (Masukkan dan...)"},
+                    imperative: {japanese: "入れてください", romaji: "irete kudasai", meaning: "Perintah Sopan (Tolong masukkan)"},
+                    negative: {japanese: "入れません", romaji: "iremasen", meaning: "Bentuk Negatif (Tidak memasukkan)"},
+                    past: {japanese: "入れました", romaji: "iremashita", meaning: "Bentuk Lampau (Sudah memasukkan)"},
+                    potential: {japanese: "入れられます", romaji: "ireraremasu", meaning: "Bentuk Dapat (Bisa memasukkan)"}
+                },
+                "出す": {
+                    masu: {japanese: "出します", romaji: "dashimasu", meaning: "Bentuk Sopan (Saya mengeluarkan)"},
+                    te: {japanese: "出して", romaji: "dashite", meaning: "Bentuk Te (Keluarkan dan...)"},
+                    imperative: {japanese: "出してください", romaji: "dashite kudasai", meaning: "Perintah Sopan (Tolong keluarkan)"},
+                    negative: {japanese: "出しません", romaji: "dashimasen", meaning: "Bentuk Negatif (Tidak mengeluarkan)"},
+                    past: {japanese: "出しました", romaji: "dashimashita", meaning: "Bentuk Lampau (Sudah mengeluarkan)"},
+                    potential: {japanese: "出せます", romaji: "dasemasu", meaning: "Bentuk Dapat (Bisa mengeluarkan)"}
+                },
+                "運ぶ": {
+                    masu: {japanese: "運びます", romaji: "hakobimasu", meaning: "Bentuk Sopan (Saya membawa)"},
+                    te: {japanese: "運んで", romaji: "hakonde", meaning: "Bentuk Te (Bawa dan...)"},
+                    imperative: {japanese: "運んでください", romaji: "hakonde kudasai", meaning: "Perintah Sopan (Tolong bawa)"},
+                    negative: {japanese: "運びません", romaji: "hakobimasen", meaning: "Bentuk Negatif (Tidak membawa)"},
+                    past: {japanese: "運びました", romaji: "hakobimashita", meaning: "Bentuk Lampau (Sudah membawa)"},
+                    potential: {japanese: "運べます", romaji: "hakobemasu", meaning: "Bentuk Dapat (Bisa membawa)"}
+                },
+                "回す": {
+                    masu: {japanese: "回します", romaji: "mawashimasu", meaning: "Bentuk Sopan (Saya memutar)"},
+                    te: {japanese: "回して", romaji: "mawashite", meaning: "Bentuk Te (Putar dan...)"},
+                    imperative: {japanese: "回してください", romaji: "mawashite kudasai", meaning: "Perintah Sopan (Tolong putar)"},
+                    negative: {japanese: "回しません", romaji: "mawashimasen", meaning: "Bentuk Negatif (Tidak memutar)"},
+                    past: {japanese: "回しました", romaji: "mawashimashita", meaning: "Bentuk Lampau (Sudah memutar)"},
+                    potential: {japanese: "回せます", romaji: "mawasemasu", meaning: "Bentuk Dapat (Bisa memutar)"}
+                },
+                "締める": {
+                    masu: {japanese: "締めます", romaji: "shimemasu", meaning: "Bentuk Sopan (Saya mengencangkan)"},
+                    te: {japanese: "締めて", romaji: "shimete", meaning: "Bentuk Te (Kencangkan dan...)"},
+                    imperative: {japanese: "締めてください", romaji: "shimete kudasai", meaning: "Perintah Sopan (Tolong kencangkan)"},
+                    negative: {japanese: "締めません", romaji: "shimemasen", meaning: "Bentuk Negatif (Tidak mengencangkan)"},
+                    past: {japanese: "締めました", romaji: "shimemashita", meaning: "Bentuk Lampau (Sudah mengencangkan)"},
+                    potential: {japanese: "締められます", romaji: "shimeraremasu", meaning: "Bentuk Dapat (Bisa mengencangkan)"}
+                },
+                "押す": {
+                    masu: {japanese: "押します", romaji: "oshimasu", meaning: "Bentuk Sopan (Saya mendorong)"},
+                    te: {japanese: "押して", romaji: "oshite", meaning: "Bentuk Te (Dorong dan...)"},
+                    imperative: {japanese: "押してください", romaji: "oshite kudasai", meaning: "Perintah Sopan (Tolong dorong)"},
+                    negative: {japanese: "押しません", romaji: "oshimasen", meaning: "Bentuk Negatif (Tidak mendorong)"},
+                    past: {japanese: "押しました", romaji: "oshimashita", meaning: "Bentuk Lampau (Sudah mendorong)"},
+                    potential: {japanese: "押せます", romaji: "osemasu", meaning: "Bentuk Dapat (Bisa mendorong)"}
+                },
+                "引く": {
+                    masu: {japanese: "引きます", romaji: "hikimasu", meaning: "Bentuk Sopan (Saya menarik)"},
+                    te: {japanese: "引いて", romaji: "hiite", meaning: "Bentuk Te (Tarik dan...)"},
+                    imperative: {japanese: "引いてください", romaji: "hiite kudasai", meaning: "Perintah Sopan (Tolong tarik)"},
+                    negative: {japanese: "引きません", romaji: "hikimasen", meaning: "Bentuk Negatif (Tidak menarik)"},
+                    past: {japanese: "引きました", romaji: "hikimashita", meaning: "Bentuk Lampau (Sudah menarik)"},
+                    potential: {japanese: "引けます", romaji: "hikemasu", meaning: "Bentuk Dapat (Bisa menarik)"}
+                }
+            };
+
+            return conjugations[verb] || null;
+        }
+
+        // 動詞活用HTML生成関数
+        function getVerbConjugationHTML(verb) {
+            const conjugations = getVerbConjugations(verb);
+            if (!conjugations) return '';
+
+            return `
+                <div class="conjugation-title">動詞活用 (Konjugasi Verba)</div>
+                <div class="conjugation-grid">
+                    <div class="conjugation-form">
+                        <div class="form-name">${conjugations.masu.meaning}</div>
+                        <div class="form-japanese">${conjugations.masu.japanese}</div>
+                        <div class="form-romaji">${conjugations.masu.romaji}</div>
+                    </div>
+                    <div class="conjugation-form">
+                        <div class="form-name">${conjugations.te.meaning}</div>
+                        <div class="form-japanese">${conjugations.te.japanese}</div>
+                        <div class="form-romaji">${conjugations.te.romaji}</div>
+                    </div>
+                    <div class="conjugation-form">
+                        <div class="form-name">${conjugations.imperative.meaning}</div>
+                        <div class="form-japanese">${conjugations.imperative.japanese}</div>
+                        <div class="form-romaji">${conjugations.imperative.romaji}</div>
+                    </div>
+                    <div class="conjugation-form">
+                        <div class="form-name">${conjugations.negative.meaning}</div>
+                        <div class="form-japanese">${conjugations.negative.japanese}</div>
+                        <div class="form-romaji">${conjugations.negative.romaji}</div>
+                    </div>
+                    <div class="conjugation-form">
+                        <div class="form-name">${conjugations.past.meaning}</div>
+                        <div class="form-japanese">${conjugations.past.japanese}</div>
+                        <div class="form-romaji">${conjugations.past.romaji}</div>
+                    </div>
+                    <div class="conjugation-form">
+                        <div class="form-name">${conjugations.potential.meaning}</div>
+                        <div class="form-japanese">${conjugations.potential.japanese}</div>
+                        <div class="form-romaji">${conjugations.potential.romaji}</div>
+                    </div>
+                </div>
+            `;
         }
 
         function getWordExample(word) {
@@ -2270,6 +2490,12 @@
             event.stopPropagation();
             const exampleDiv = document.getElementById(exampleId);
             exampleDiv.classList.toggle('show');
+        }
+
+        function toggleVerbConjugation(verbId, verb, event) {
+            event.stopPropagation();
+            const verbDiv = document.getElementById(verbId);
+            verbDiv.classList.toggle('show');
         }
 
 
